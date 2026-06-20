@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 import useAppStore from '../../store/useAppStore';
 import GalleryCard from '../GalleryCard/GalleryCard';
+import HeroCanvas from '../HeroCanvas/HeroCanvas';
 
 /**
  * <JourneyFlow />
@@ -48,40 +49,44 @@ function HeroSplit() {
       animate="visible"
       exit="exit"
     >
-      <motion.h1 className="journey__hero-title" variants={itemVariants}>
-        {t('hero.title') || 'Architecture & Design'}
-      </motion.h1>
+      <div className="journey__hero-text">
+        <motion.h1 className="journey__hero-title" variants={itemVariants}>
+          {t('hero.title') || 'Architecture & Design'}
+        </motion.h1>
 
-      <motion.p className="journey__hero-subtitle" variants={itemVariants}>
-        {t('hero.subtitle') || 'Where vision meets structure'}
-      </motion.p>
+        <motion.p className="journey__hero-subtitle" variants={itemVariants}>
+          {t('hero.subtitle') || 'Where vision meets structure'}
+        </motion.p>
+      </div>
+
+      <motion.div className="journey__hero-3d" variants={itemVariants}>
+        <HeroCanvas />
+      </motion.div>
 
       <motion.div className="journey__hero-choices" variants={itemVariants}>
         <button
           type="button"
-          className="journey__choice journey__choice--interiors"
+          className="journey__choice"
           onClick={() => setCategory('INTERIOR')}
           aria-label="View interior projects"
         >
-          <span className="journey__choice-label">
-            {t('hero.interiors') || 'Interiors'}
-          </span>
-          <span className="journey__choice-line" aria-hidden="true" />
+          {t('hero.interiors') || 'Interiors'}
         </button>
 
         <span className="journey__choice-divider" aria-hidden="true" />
 
         <button
           type="button"
-          className="journey__choice journey__choice--exteriors"
+          className="journey__choice"
           onClick={() => setCategory('EXTERIOR')}
           aria-label="View exterior projects"
         >
-          <span className="journey__choice-label">
-            {t('hero.exteriors') || 'Exteriors'}
-          </span>
-          <span className="journey__choice-line" aria-hidden="true" />
+          {t('hero.exteriors') || 'Exteriors'}
         </button>
+      </motion.div>
+
+      <motion.div className="journey__hero-scroll" variants={itemVariants}>
+        <div className="journey__hero-scroll-pill" aria-hidden="true" />
       </motion.div>
     </motion.div>
   );

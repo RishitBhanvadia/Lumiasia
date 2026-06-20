@@ -36,6 +36,11 @@ vi.mock('../components/GalleryCard/GalleryCard', () => ({
   ),
 }));
 
+// Mock HeroCanvas
+vi.mock('../components/HeroCanvas/HeroCanvas', () => ({
+  default: () => <div data-testid="hero-canvas">Mocked 3D Canvas</div>,
+}));
+
 // Create a mock store with controllable state
 let mockState = {};
 const mockSetCategory = vi.fn();

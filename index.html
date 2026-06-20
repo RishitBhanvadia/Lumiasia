@@ -26,16 +26,20 @@
     <!-- Security — PRD §3 CSP -->
     <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-eval' 'unsafe-inline' blob:; worker-src 'self' blob:; connect-src 'self' https:;">
 
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet">
+
     <style>
       :root {
-        --color-bg-base: #F9F8F6;
-        --color-accent-gold: #D4AF37;
+        --color-bg-base: #F7F4EF;
         --color-text-primary: #2C2A29;
       }
       body {
         margin: 0;
         background-color: var(--color-bg-base);
-        font-family: 'Georgia', serif;
+        font-family: 'Playfair Display', serif;
       }
       #root:empty {
         display: flex;

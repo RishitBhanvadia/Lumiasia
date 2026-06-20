@@ -5,7 +5,7 @@ import { checkWebGLSupport } from '../../utils/webglCheck';
 
 /**
  * <HeroCanvas />
- * PRD §6 — Persistent Three.js context spanning 100vw/100vh, fixed behind DOM.
+ * Inline 3D context for the Massing Study element.
  * Uses @react-three/fiber Canvas with the Scene component.
  */
 export default function HeroCanvas() {
@@ -23,39 +23,30 @@ export default function HeroCanvas() {
       <div 
         className="hero-canvas fallback-2d" 
         style={{
-          position: 'fixed',
-          top: 0,
-          left: 0,
-          width: '100vw',
-          height: '100vh',
-          zIndex: -1,
-          backgroundColor: 'var(--color-bg-base)',
-          backgroundImage: 'radial-gradient(circle at center, var(--color-bg-surface) 0%, var(--color-bg-base) 100%)'
+          width: '100%',
+          height: '380px',
+          maxWidth: '380px',
+          margin: '0 auto',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          backgroundColor: 'transparent'
         }}
       >
-        {/* PRD §7.2 - Fallback for low-end/no-WebGL devices */}
+        <span style={{ fontSize: '0.8rem', color: 'var(--color-text-muted)', letterSpacing: '0.1em' }}>[ 3D View Unavailable ]</span>
       </div>
     );
   }
 
   return (
-    <div className="hero-canvas">
+    <div className="hero-canvas" style={{ width: '100%', height: '380px', maxWidth: '380px', margin: '0 auto' }}>
       <Canvas
-        camera={{ position: [0, 0, 5], fov: 60 }}
+        camera={{ position: [0, 5, 8], fov: 45 }}
         dpr={[1, 2]}
         gl={{
           antialias: true,
           alpha: true,
           powerPreference: 'high-performance',
-        }}
-        style={{
-          position: 'fixed',
-          top: 0,
-          left: 0,
-          width: '100vw',
-          height: '100vh',
-          zIndex: -1,
-          pointerEvents: 'none',
         }}
       >
         <Scene />
