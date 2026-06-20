@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- SEO -->
+    <title>Lumiasia | Visionary Luxury Architecture & Interior Design</title>
+    <meta name="description" content="Discover Lumiasia, the pinnacle of luxury architecture and interior design. Explore our visionary projects through immersive, high-fidelity 3D WebGL experiences." />
+    <meta name="keywords" content="luxury architecture, premium interior design, 3D visualization, architectural design firm, exclusive real estate, WebGL architecture" />
+    <meta name="author" content="Lumiasia Design Studio" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Lumiasia | Visionary Luxury Architecture & Interior Design" />
+    <meta property="og:description" content="Where vision meets structure. Explore premium architectural projects through immersive 3D experiences." />
+    <meta property="og:image" content="/og-image.jpg" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:title" content="Lumiasia | Visionary Luxury Architecture & Interior Design" />
+    <meta property="twitter:description" content="Where vision meets structure. Explore premium architectural projects through immersive 3D experiences." />
+    <meta property="twitter:image" content="/og-image.jpg" />
+
+    <!-- Security — PRD §3 CSP -->
+    <meta http-equiv="Content-Security-Policy" content="script-src 'self' 'unsafe-eval' 'unsafe-inline' blob:; worker-src 'self' blob:; connect-src 'self' https:;">
+
+    <style>
+      :root {
+        --color-bg-base: #F9F8F6;
+        --color-accent-gold: #D4AF37;
+        --color-text-primary: #2C2A29;
+      }
+      body {
+        margin: 0;
+        background-color: var(--color-bg-base);
+        font-family: 'Georgia', serif;
+      }
+      #root:empty {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        width: 100vw;
+      }
+      #root:empty::after {
+        content: 'LUMIASIA';
+        letter-spacing: 0.5rem;
+        color: var(--color-text-primary);
+        font-size: 1.2rem;
+        animation: pulse 2s infinite ease-in-out;
+      }
+      @keyframes pulse {
+        0%, 100% { opacity: 0.3; transform: scale(0.98); }
+        50% { opacity: 0.7; transform: scale(1); }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="root"></div>
+    <script type="module" src="/src/main.jsx"></script>
+  </body>
+</html>

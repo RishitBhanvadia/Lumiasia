@@ -1,0 +1,21 @@
+{
+  "hero": {
+    "title": "Architecture & Design",
+    "subtitle": "Where vision meets structure",
+    "interiors": "Interiors",
+    "exteriors": "Exteriors"
+  },
+  "gallery": {
+    "sectionTitle": "{{category}} Projects",
+    "viewProject": "View Project"
+  },
+  "welcome": {
+    "title": "Welcome to Lumiasia",
+    "description": "Luxury architecture and interior design, reimagined."
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "Something went wrong",
+    "retry": "Try again"
+  }
+}

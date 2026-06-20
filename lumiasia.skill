@@ -1,0 +1,47 @@
+# Lumiasia Codebase Skill
+
+## 🎯 Context & Mission
+You are working on **Lumiasia**, a luxury architectural visualization platform. The mission is visual excellence, extreme performance, and 100% test coverage.
+
+## 🛠️ Tech Stack Constants
+- **CSS**: Vanilla CSS + Tailwind (Design Tokens).
+- **State**: Zustand (Store in `src/store/useAppStore.js`).
+- **3D**: Three.js (R3F). Canvas is **persistent** across routes.
+- **Localization**: EN, GU, HI.
+
+## 🧠 Project Logic & "Gotchas"
+
+### 1. The 3D Canvas
+- The `<HeroCanvas />` is fixed at `z-index: -1`.
+- It **never unmounts**. Animation states are driven by `activeCategory` in the store.
+- **Wait for Hydration**: When testing, always wait ~2s after `load` for Three.js to initialize before asserting on visuals.
+
+### 2. Localization Parity
+- **Strict Rule**: If you add a key to `src/i18n/locales/en.json`, you **MUST** add it to `gu.json` and `hi.json`.
+- Run `npm run test src/test/i18nCompleteness.test.js` to verify.
+
+### 3. E2E Testing Stability
+- **Concurrency**: Do **NOT** run Playwright with parallel workers. It will crash the Vite dev server during 3D context creation.
+- **Config**: Always keep `workers: 1` in `playwright.config.js`.
+
+### 4. Animation Timings
+- Journey transitions have a ~1s exit animation and ~1s entry animation.
+- Total wait time for a "page change" in tests should be `waitForTimeout(2000)` or `waitForSelector` with a long timeout.
+
+## 📜 Standard Workflows
+
+### Running the "Health Check"
+To ensure the codebase is "Stable":
+1. `npm run test` (All unit tests)
+2. `npx playwright test` (All E2E tests)
+3. `npm run build` (Production integrity)
+
+### Adding a New Project
+1. Add to the Supabase database (or mock in `api.js`).
+2. Update translation files for the project title.
+3. Verify the "Blueprint Wipe" animation in `GalleryCard`.
+
+## ⚠️ Forbidden Actions
+- **No Tailwind Utilities for core design tokens**: Use CSS variables (`var(--color-bg-base)`) for theme colors.
+- **No parallel Playwright workers**: Enforced via config, do not override.
+- **No un-sanitized HTML**: Always use `DOMPurify` before `dangerouslySetInnerHTML`.
