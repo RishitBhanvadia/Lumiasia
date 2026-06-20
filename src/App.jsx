@@ -1,10 +1,11 @@
-import { useEffect } from 'react'
+import { useEffect, Suspense, lazy } from 'react'
 import './App.css'
 import ErrorBoundary from './components/ErrorBoundary/ErrorBoundary'
 import Header from './components/Header/Header'
-import HeroCanvas from './components/HeroCanvas/HeroCanvas'
 import JourneyFlow from './components/JourneyFlow/JourneyFlow'
 import useAppStore from './store/useAppStore'
+
+const HeroCanvas = lazy(() => import('./components/HeroCanvas/HeroCanvas'))
 
 /**
  * App — Root component
@@ -23,7 +24,9 @@ function App() {
 
   return (
     <ErrorBoundary>
-      <HeroCanvas />
+      <Suspense fallback={null}>
+        <HeroCanvas />
+      </Suspense>
       <Header />
       <JourneyFlow />
     </ErrorBoundary>

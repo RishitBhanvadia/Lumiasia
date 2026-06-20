@@ -53,6 +53,7 @@ vi.mock('../store/useAppStore', () => ({
       error: null,
       setCategory: mockSetCategory,
       resetState: mockResetState,
+      setScrollProgress: vi.fn(),
     };
     return selector ? selector(state) : state;
   },

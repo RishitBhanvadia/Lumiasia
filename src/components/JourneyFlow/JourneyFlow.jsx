@@ -1,4 +1,4 @@
-import { useRef, useCallback } from 'react';
+import { useRef, useCallback, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 import useAppStore from '../../store/useAppStore';
@@ -89,7 +89,24 @@ function HeroSplit() {
 
 function GalleryView() {
   const { t } = useTranslation();
-  const { activeCategory, resetState, projects, currentLanguage, isLoadingProjects } = useAppStore();
+  const { activeCategory, resetState, projects, currentLanguage, isLoadingProjects, setScrollProgress } = useAppStore();
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      if (scrollHeight > 0) {
+        setScrollProgress(document.documentElement.scrollTop / scrollHeight);
+      } else {
+        setScrollProgress(0);
+      }
+    };
+    
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    // Trigger once on mount
+    handleScroll();
+    
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [setScrollProgress]);
 
   const filteredProjects = projects.filter((p) => p.category === activeCategory);
 

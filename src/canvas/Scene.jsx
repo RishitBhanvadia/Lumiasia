@@ -3,7 +3,11 @@ import { useFrame } from '@react-three/fiber';
 import { Float, Environment, useGLTF, Html } from '@react-three/drei';
 import * as THREE from 'three';
 import gsap from 'gsap';
+import { CustomEase } from 'gsap/CustomEase';
 import useAppStore from '../store/useAppStore';
+
+gsap.registerPlugin(CustomEase);
+CustomEase.create('customBezier', '0.85, 0, 0.15, 1');
 
 /**
  * Scene.jsx
@@ -133,7 +137,7 @@ function CameraController() {
       y: targetPosition.y,
       z: targetPosition.z,
       duration: 2.4,
-      ease: 'cubic-bezier(0.85, 0, 0.15, 1)',
+      ease: 'customBezier',
       onComplete: () => setTransitioning(false),
     });
   }, [activeCategory, setTransitioning]);
