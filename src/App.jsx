@@ -14,11 +14,20 @@ import useAppStore from './store/useAppStore'
  */
 function App() {
   const fetchProjects = useAppStore((state) => state.fetchProjects)
+  const activeCategory = useAppStore((state) => state.activeCategory)
 
   useEffect(() => {
     // PRD §7.2 - Populate Projects global state
     fetchProjects()
   }, [fetchProjects])
+
+  useEffect(() => {
+    if (activeCategory === 'INTERIOR') {
+      document.body.classList.add('theme-dark')
+    } else {
+      document.body.classList.remove('theme-dark')
+    }
+  }, [activeCategory])
 
   return (
     <ErrorBoundary>
